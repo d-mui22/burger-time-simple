@@ -37,33 +37,37 @@ class App extends Component {
 
   toggleShowHandler = () => {
     const showOutput = this.state.toggleOutput
+    const switch2 = this.state.toggleOutputExample2
     this.setState({
-      toggleOutput: !showOutput
+      toggleOutput: !showOutput,
+      toggleOutputExample2: !switch2
     })
   }
 
   toggleShowHandlerExample2 = () => {
     const showOutputExample2 = this.state.toggleOutputExample2
+    const switch1 = this.state.toggleOutput
     this.setState({
-      toggleOutputExample2: !showOutputExample2
+      toggleOutputExample2: !showOutputExample2,
+      toggleOutput: !switch1
     })
   }
 
   render() {
     const toggle = (this.state.toggleOutputExample2)
+    let outPutExample2;
 
-    let outPutExample2 = this.state.person.map(person => {
-      return(
-        <UserOutput
-          key={person.id}
-          name={person.name}
-          toggle={toggle}
-        />
-      )
-    });
-    if (!this.state.toggleOutputExample2) {
-      outPutExample2 = null;
-    }
+    if (this.state.toggleOutputExample2) {
+      outPutExample2 = this.state.person.map(person => {
+        return(
+          <UserOutput
+            key={person.id}
+            name={person.name}
+            toggle={this.state.toggleOutput}
+            />
+        )
+      });
+    } else outPutExample2 = null;
 
     return (
       <div className="App">

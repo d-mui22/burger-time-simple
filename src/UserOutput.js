@@ -3,12 +3,11 @@ import './UserOutput.css'
 
 const UserOutput = (props) => {
   let classes;
-
-  if (!props.toggle) {
-    debugger
+  debugger
+  if (props.toggle === true) {
     classes = ['Output', 'Highlighted'].join(' ')
   }else {
-    classes = ['Output']
+    classes = 'Output'
   }
   return(
     <p className={classes} onClick={props.click}>
