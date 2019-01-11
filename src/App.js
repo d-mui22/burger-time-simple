@@ -2,15 +2,14 @@ import React, { Component } from 'react';
 import './App.css';
 import UserOutput from './UserOutput'
 import UserInput from './UserInput'
-import UserOutputExample2 from './UserOutputExample2'
 
 class App extends Component {
 
   state = ({
     person: [
-      {name: "Dave"},
-      {name: "Tina"},
-      {name: "Jerry"}
+      {id: 0, name: "Dave"},
+      {id: 1, name: "Tina"},
+      {id: 2, name: "Jerry"}
     ],
     toggleOutput: false,
     toggleOutputExample2: true
@@ -41,7 +40,6 @@ class App extends Component {
     this.setState({
       toggleOutput: !showOutput
     })
-
   }
 
   toggleShowHandlerExample2 = () => {
@@ -52,15 +50,17 @@ class App extends Component {
   }
 
   render() {
-    let outPutExample2 = (
-      <div className="Toggle-Example-2">
-        <UserOutputExample2
-          name={this.state.person[2].name}
-          click={this.nameClickHandler.bind(this, 'jake')}
-          toggle={this.state.toggleOutputExample2}
-          />
-      </div>
-    );
+    const toggle = (this.state.toggleOutputExample2)
+
+    let outPutExample2 = this.state.person.map(person => {
+      return(
+        <UserOutput
+          key={person.id}
+          name={person.name}
+          toggle={toggle}
+        />
+      )
+    });
     if (!this.state.toggleOutputExample2) {
       outPutExample2 = null;
     }
@@ -69,7 +69,7 @@ class App extends Component {
       <div className="App">
         <div className="Buttons">
           <button onClick={this.toggleShowHandler}>Show/Hide Toggle Example 1</button>
-          <button onClick={this.toggleShowHandlerExample2}>Show/Hide2 Toggle Example 2</button>
+          <button onClick={this.toggleShowHandlerExample2}>Show/Hide Toggle Example 2</button>
         </div>
 
         { this.state.toggleOutput ?

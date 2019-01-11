@@ -4,10 +4,14 @@
   margin: 20px auto;
   padding: 20px 0;
   width: 20%;
-  background-color: #efaa84
+  background-color: #efaa84;
 }
 
 .Output:hover {
   background-color: lightblue;
   cursor: pointer;
+}
+
+.Highlighted {
+  background-color: darkgreen;
 }
