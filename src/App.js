@@ -52,23 +52,24 @@ class App extends Component {
 
   render() {
     const toggle = (this.state.toggleOutputExample2)
-    let OutputExample
+    let OutputExample;
+    let OutputExample2;
 
     if (this.state.toggleOutputExample2) {
-      OutputExample = this.state.person.map(person => {
+      OutputExample2 = this.state.person.map(person => {
         return(
-          <UserOutput
+          <UserOutputExample2
             key={person.id}
             name={person.name}
-            toggle={this.state.toggleOutput}
+            toggle={toggle}
           />
         )
       });
     } else OutputExample2 = null;
 
-    let OutputExample2 = this.state.person.map(person => {
+    OutputExample = this.state.person.map(person => {
       return(
-        <UserOutputExample2
+        <UserOutput
           key={person.id}
           name={person.name}
           toggle={this.state.toggleOutputExample2}
