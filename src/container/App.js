@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import UserOutput from './UserOutput'
-import UserInput from './UserInput'
-import UserOutputExample2 from './UserOutputExample2'
+import UserOutput from '../component/UserOutput'
+import UserInput from '../component/UserInput'
+import UserOutputExample2 from '../component/UserOutputExample2'
 
 class App extends Component {
 
@@ -26,10 +26,10 @@ class App extends Component {
     })
   }
 
-  nameClickHandler = (newName) => {
+  nameClickHandler = () => {
     this.setState({
       person: [
-        {name: newName},
+        {name: "Dave"},
         {name: "Tina"},
         {name: "Jerry"}
       ]
@@ -62,6 +62,7 @@ class App extends Component {
             key={person.id}
             name={person.name}
             toggle={toggle}
+            click={this.nameClickHandler}
           />
         )
       });
@@ -73,6 +74,7 @@ class App extends Component {
           key={person.id}
           name={person.name}
           toggle={this.state.toggleOutputExample2}
+          click={this.nameClickHandler}
         />
       )
     })
