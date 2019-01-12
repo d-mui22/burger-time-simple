@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import UserOutput from './UserOutput'
 import UserInput from './UserInput'
+import UserOutputExample2 from './UserOutputExample2'
 
 class App extends Component {
 
@@ -11,7 +12,7 @@ class App extends Component {
       {id: 1, name: "Tina"},
       {id: 2, name: "Jerry"}
     ],
-    toggleOutput: false,
+    toggleOutput: true,
     toggleOutputExample2: true
   })
 
@@ -37,37 +38,43 @@ class App extends Component {
 
   toggleShowHandler = () => {
     const showOutput = this.state.toggleOutput
-    const switch2 = this.state.toggleOutputExample2
     this.setState({
-      toggleOutput: !showOutput,
-      toggleOutputExample2: !switch2
+      toggleOutput: !showOutput
     })
   }
 
   toggleShowHandlerExample2 = () => {
     const showOutputExample2 = this.state.toggleOutputExample2
-    const switch1 = this.state.toggleOutput
     this.setState({
-      toggleOutputExample2: !showOutputExample2,
-      toggleOutput: !switch1
+      toggleOutputExample2: !showOutputExample2
     })
   }
 
   render() {
     const toggle = (this.state.toggleOutputExample2)
-    let outPutExample2;
+    let OutputExample
 
     if (this.state.toggleOutputExample2) {
-      outPutExample2 = this.state.person.map(person => {
+      OutputExample = this.state.person.map(person => {
         return(
           <UserOutput
             key={person.id}
             name={person.name}
             toggle={this.state.toggleOutput}
-            />
+          />
         )
       });
-    } else outPutExample2 = null;
+    } else OutputExample2 = null;
+
+    let OutputExample2 = this.state.person.map(person => {
+      return(
+        <UserOutputExample2
+          key={person.id}
+          name={person.name}
+          toggle={this.state.toggleOutputExample2}
+        />
+      )
+    })
 
     return (
       <div className="App">
@@ -78,22 +85,14 @@ class App extends Component {
 
         { this.state.toggleOutput ?
           <div>
-            <UserOutput
-              name={this.state.person[0].name}
-              toggle={this.state.toggleOutput}
-              />
-            <UserOutput
-              name={this.state.person[1].name}
-              click={this.nameClickHandler.bind(this,'Mike')}
-              />
+            {OutputExample}
           </div> : null
         }
 
-        {outPutExample2}
+        {OutputExample2}
 
         <UserInput
           change={this.nameChangeHandler}
-          name={this.state.person[0].name}
         />
       </div>
     );

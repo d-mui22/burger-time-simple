@@ -1,7 +1,7 @@
 import React from 'react'
-import './UserOutput.css'
+import './UserOutputExample2.css'
 
-const UserOutput = (props) => {
+const UserOutputExample2 = (props) => {
   let classes;
 
   if (props.toggle === false) {
@@ -16,4 +16,4 @@ const UserOutput = (props) => {
   )
 }
 
-export default UserOutput
+export default UserOutputExample2
