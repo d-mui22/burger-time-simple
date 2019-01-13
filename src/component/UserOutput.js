@@ -4,7 +4,7 @@ import './UserOutput.css'
 const UserOutput = (props) => {
   let classes;
 
-  if (props.toggle === false) {
+  if (props.toggle) {
     classes = 'Highlighted'
   }else {
     classes = 'Output'
