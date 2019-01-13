@@ -12,8 +12,10 @@ class App extends Component {
       {id: 1, name: "Tina"},
       {id: 2, name: "Jerry"}
     ],
-    toggleOutput: true,
-    toggleOutputExample2: true
+    toggleOutput: false,
+    toggleOutputExample2: false,
+    toggleSelected: null,
+    toggleSelected2: null
   })
 
   nameChangeHandler = (event) => {
@@ -35,25 +37,34 @@ class App extends Component {
       ]
     })
   }
-
+debugger
   toggleShowHandler = () => {
     const showOutput = this.state.toggleOutput
+    const toggle = this.state.toggleSelected
+debugger
     this.setState({
-      toggleOutput: !showOutput
+      toggleOutput: !showOutput,
+      toggleSelected: !toggle,
+      toggleSelected2: false
     })
   }
 
   toggleShowHandlerExample2 = () => {
+    const toggle2 = this.state.toggleSelected2
     const showOutputExample2 = this.state.toggleOutputExample2
+
     this.setState({
-      toggleOutputExample2: !showOutputExample2
+      toggleOutputExample2: !showOutputExample2,
+      toggleSelected2: !toggle2,
+      toggleSelected: false
     })
   }
 
   render() {
-    const toggle = (this.state.toggleOutputExample2)
     let OutputExample;
     let OutputExample2;
+    const toggle = this.state.toggleSelected
+    const toggle2 = this.state.toggleSelected2
 
     if (this.state.toggleOutputExample2) {
       OutputExample2 = this.state.person.map(person => {
@@ -61,7 +72,7 @@ class App extends Component {
           <UserOutputExample2
             key={person.id}
             name={person.name}
-            toggle={toggle}
+            toggle={toggle2}
             click={this.nameClickHandler}
           />
         )
@@ -73,7 +84,7 @@ class App extends Component {
         <UserOutput
           key={person.id}
           name={person.name}
-          toggle={this.state.toggleOutputExample2}
+          toggle={toggle}
           click={this.nameClickHandler}
         />
       )

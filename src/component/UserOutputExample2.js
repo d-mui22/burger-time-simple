@@ -1,19 +1,34 @@
 import React from 'react'
 import './UserOutputExample2.css'
+import Radium from 'radium'
 
 const UserOutputExample2 = (props) => {
-  let classes;
 
-  if (props.toggle === false) {
-    classes = 'Highlighted'
-  }else {
-    classes = 'Output'
+  const styles = {
+    backgroundColor: 'green',
+    color: 'orange',
+    fontWeight: 'bolder',
+    border: '2px solid #000',
+    boxShadow: '10px 15px #ccc',
+    margin: '50px auto',
+    padding: '20px 0',
+    width: '20%',
+    ':hover': {
+      backgroundColor: 'black',
+      color: 'yellow',
+      fontStyle: 'italic'
+    }
   }
+
+  if (props.toggle) {
+    styles.backgroundColor = 'yellow'
+  }
+
   return(
-    <p className={classes} onClick={props.click}>
+    <p style={styles} onClick={props.click}>
       {props.name}
     </p>
   )
 }
 
-export default UserOutputExample2
+export default Radium(UserOutputExample2)
